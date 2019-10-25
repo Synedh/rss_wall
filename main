@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 # coding: utf-8
 
+import os
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 
-from lemonde import LeMonde
-import model
+from data_management.lemonde import LeMonde
+import data_management.model as model
 
 # echo == debug mode
-engine = create_engine('sqlite:///../account.db', echo=True)
+dir_path = os.path.dirname(os.path.realpath(__file__))
+engine = create_engine('sqlite:///' + dir_path + '/../account.db', echo=True)
 Session = sessionmaker(bind=engine)
 model.Base.metadata.drop_all(engine)
 model.Base.metadata.create_all(engine)
@@ -18,7 +20,7 @@ if __name__ == '__main__':
     try:
         lemonde = LeMonde(session)
         lemonde.load_une(session)
-        print(lemonde.get_une(session))
+        print(session.query(model.Article).all())
     except:
         session.rollback()
         raise

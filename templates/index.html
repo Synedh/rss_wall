@@ -1,0 +1,18 @@
+{% extends "overall.html" %}
+{% block content %}
+    <div class="index">
+        {% for article in articles %}
+        <a class="article" href="{{ article.url }}">
+            <div class="title">{{ article.title }}</div>
+            <div class="pub_date">{{ article.publication_date }}</div>
+            <div class="detail">
+                <div class="img"><img src="{{ article.image_url }}"></div>
+                <div class="description">{{ article.description }}</div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block footer %}
+    Coucou
+{% endblock %}

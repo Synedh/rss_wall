@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block meta %}{% endblock %}
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+        <link rel='shortcut icon' type='image/x-icon' href="{{ url_for('static', filename='img/icon.png') }}" />
+        <title>{% block title %}RSS Wall{% endblock %}</title>
+    </head>
+    <body>
+        <div class="header">  
+        {% block header %}
+        <img src="{{ url_for('static', filename='img/drawn-brick-2.jpg') }}">
+        {% endblock %}
+        </div>
+        <div class="content">
+        {% block content %}{% endblock %}
+        </div>
+        <div class="footer"> 
+        {% block footer %}{% endblock %}
+        </div>
+    </body>
+</html>

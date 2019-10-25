@@ -1,11 +1,14 @@
 # coding: utf-8
 
-from tools import xml_to_dict
-from model import NewsPaper, Article
+from data_management.tools import xml_to_dict
+from data_management.model import NewsPaper, Article
 
+import os
 import requests
 import configparser
 from datetime import datetime
+
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
 class LeMonde:
@@ -16,7 +19,7 @@ class LeMonde:
             self.newspaper_id = sql_newspaper.id
         except IndexError as e:
             config = configparser.ConfigParser()
-            config.read('../urls.ini')
+            config.read(dir_path + '/../urls.ini')
             self.la_une = config['lemonde']['une']
             sql_newspaper = NewsPaper(name='Le Monde', url_une=self.la_une)
             session.add(sql_newspaper)
