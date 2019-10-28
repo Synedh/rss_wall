@@ -16,7 +16,6 @@ Session = sessionmaker(bind=engine)
 @app.route('/une/')
 def une():
     session = Session()
-    articles = session.query(Article).all()
-    print(articles[0])
+    articles = session.query(Article).order_by(Article.publication_date.desc())
 
     return render_template('index.html', articles=articles)

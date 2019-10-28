@@ -1,22 +1,75 @@
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    display: flex;  
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-bottom: 1px solid black;
+}
+
+.header .title {
+    font-family: serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+}
+
+.header .toggle-theme {
+    max-height: 23px;
+    text-align: right;
+    width: auto;
+}
+
+.header .toggle-theme .sun {
+    height: 100%;
+    filter: grayscale(100%);
+    display: none;
+}
+
+.header .toggle-theme .sun:hover {
+    cursor: pointer;
+    filter: none;
+}
+
+.header .toggle-theme .moon {
+    height: 100%;
+    filter: opacity(25%);
+}
+
+.header .toggle-theme .moon:hover {
+    cursor: pointer;
+    filter: none;
+}
+
+
 .index {
     display: flex;
-    flex-wrap: wrap;
-    font-family: "Trebuchet MS", Helvetica, sans-serif
+    flex-direction: column;
+    margin: 10px auto;
+    max-width: 1000px;
+    border: 1px solid black;
+    border-bottom: none;
 ;}
 
 .index .article {
-    max-width: 300px;
-    border: 2px solid grey;
-    border-radius: 5px;
-    margin: 5px;
+    /*width: 100%;*/
+    border-bottom: 1px solid black;
     padding: 7px;
-
     text-decoration: none;
     color: #212121;
 }
 
 .index .article:hover {
     background-color: #EEEEEE;
+}
+
+.index .article .title {
+    font-size: 18px;
 }
 
 .index .article .pub_date {
@@ -27,8 +80,39 @@
 .index .article .detail {
     display: flex;
     align-items: center;
+    padding-top: 5px;
 }
 
 .index .article .detail .img {
     padding-right: 7px;
+    max-width: 100px;
+    height: auto;
+}
+
+/* DARK MODE */
+body.dark {
+    background-color: #212121;
+}
+
+body.dark .header .title,
+body.dark .index .article {
+    color: #EEEEEE;
+}
+
+body.dark .header,
+body.dark .index,
+body.dark .index .article {
+    border-color: grey;
+}
+
+body.dark .index .article:hover {
+    background-color: #313131;
+}
+
+body.dark .header .toggle-theme .sun {
+    display: block;
+}
+
+body.dark .header .toggle-theme .moon {
+    display: none;
 }

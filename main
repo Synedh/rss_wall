@@ -10,7 +10,7 @@ import data_management.model as model
 
 # echo == debug mode
 dir_path = os.path.dirname(os.path.realpath(__file__))
-engine = create_engine('sqlite:///' + dir_path + '/../account.db', echo=True)
+engine = create_engine('sqlite:///' + dir_path + '/../account.db')
 Session = sessionmaker(bind=engine)
 model.Base.metadata.drop_all(engine)
 model.Base.metadata.create_all(engine)
@@ -20,7 +20,6 @@ if __name__ == '__main__':
     try:
         lemonde = LeMonde(session)
         lemonde.load_une(session)
-        print(session.query(model.Article).all())
     except:
         session.rollback()
         raise

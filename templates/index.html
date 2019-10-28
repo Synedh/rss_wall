@@ -2,11 +2,11 @@
 {% block content %}
     <div class="index">
         {% for article in articles %}
-        <a class="article" href="{{ article.url }}">
+        <a class="article" target="_blank" rel="noopener noreferrer" href="{{ article.url }}">
             <div class="title">{{ article.title }}</div>
-            <div class="pub_date">{{ article.publication_date }}</div>
+            <div class="pub_date">{{ article.newspaper.name }} - {{ article.publication_date }}</div>
             <div class="detail">
-                <div class="img"><img src="{{ article.image_url }}"></div>
+                <img class="img" src="{{ article.image_url }}"> 
                 <div class="description">{{ article.description }}</div>
             </div>
         </a>
