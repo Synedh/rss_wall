@@ -5,7 +5,7 @@ import os
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy.orm import sessionmaker
 
-from data_management.lemonde import LeMonde
+from data_management.websites import LeMonde, Liberation, LeFigaro, LePoint, LeParisien
 import data_management.model as model
 
 # echo == debug mode
@@ -18,8 +18,11 @@ model.Base.metadata.create_all(engine)
 if __name__ == '__main__':
     session = Session()
     try:
-        lemonde = LeMonde(session)
-        lemonde.load_une(session)
+        LeMonde(session).load_une(session)
+        # Liberation(session).load_une(session)
+        # LeFigaro(session).load_une(session)
+        # LePoint(session).load_une(session)
+        # LeParisien(session).load_une(session)
     except:
         session.rollback()
         raise
